@@ -1,0 +1,26 @@
+routes:
+  -
+    uri: /web1/*
+    service_id: 1
+  -
+    uri: /web2/*
+    service_id: 2
+  -
+    uri: /*
+    service_id: 1
+
+services:
+  -
+    id: 1
+    upstream:
+      nodes:
+        "web1:80": 1
+      type: roundrobin
+  -
+    id: 2
+    upstream:
+      nodes:
+        "web2:80": 1
+      type: roundrobin
+
+#END
